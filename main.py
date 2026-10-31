@@ -4,6 +4,7 @@ from fastapi import FastAPI, HTTPException, Query
 import joblib
 from fastapi.middleware.cors import CORSMiddleware
 from api.citywide import router as citywide_router
+from api.citywide_expanded import router as citywide_expanded_router
 
 BASE_DIR = Path(__file__).resolve().parent
 DATA_PATH = BASE_DIR / "data" / "processed" / "airaware_merged.csv"
@@ -11,6 +12,7 @@ MODEL_PATH = BASE_DIR / "models" / "saved" / "linear_regression_sklearn.joblib"
 
 app = FastAPI(title="AirAware API", version="1.0.0")
 app.include_router(citywide_router)
+app.include_router(citywide_expanded_router)
 
 app.add_middleware(
     CORSMiddleware,
