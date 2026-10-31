@@ -10,6 +10,7 @@ import {
   YAxis,
 } from 'recharts';
 import './App.css';
+import CitywideMap from './components/CitywideMap.jsx';
 
 const models = [
   { name: 'Persistence baseline', rmse: 4.3719, mae: 2.8081, r2: 0.9337 },
@@ -204,6 +205,7 @@ function App() {
     History: 'Explore historical pollution patterns.',
     'Gradient Descent': 'See how the model learns by reducing prediction error.',
     Models: 'Compare models on the untouched test set.',
+    Map: 'Explore Bengaluru monitoring stations and historical pollution observations.',
   }[activePage]), [activePage]);
 
   return (
@@ -222,6 +224,7 @@ function App() {
             ['History', '◷'],
             ['Gradient Descent', '↘'],
             ['Models', '⌘'],
+            ['Map', '⌖'],
           ].map(([page, symbol]) => (
             <button
               key={page}
@@ -265,7 +268,7 @@ function App() {
           <div>
             <div className="eyebrow"><span className="eyebrow-line" /> AIR QUALITY INTELLIGENCE</div>
             <h1>{activePage === 'Overview' ? <>A clearer view of<br /><span>the air you breathe.</span></> : activePage}</h1>
-            <p>{pageSubtitle} Historical observations from the BTM Layout monitoring station.</p>
+            <p>{pageSubtitle}{activePage !== 'Map' ? ' Historical observations from the BTM Layout monitoring station.' : ''}</p>
           </div>
           <div className="heading-date">
             <span className="calendar-icon">▦</span>
@@ -275,10 +278,12 @@ function App() {
 
         {apiError && <section className="notice"><span className="notice-icon">!</span><p>{apiError}</p></section>}
 
-        <section className="notice">
-          <span className="notice-icon">i</span>
-          <p><strong>Historical data</strong> — dashboard readings are loaded from the AirAware API and the project's hourly dataset. This is not a live sensor feed. The forecast card shows a historical-model estimate, not current air quality.</p>
-        </section>
+        {activePage !== 'Map' && (
+          <section className="notice">
+            <span className="notice-icon">i</span>
+            <p><strong>Historical data</strong> — dashboard readings are loaded from the AirAware API and the project's hourly dataset. This is not a live sensor feed. The forecast card shows a historical-model estimate, not current air quality.</p>
+          </section>
+        )}
 
         {activePage === 'Overview' && (
           <>
@@ -573,6 +578,8 @@ function App() {
             )}
           </section>
         )}
+
+        {activePage === 'Map' && <CitywideMap />}
 
         {activePage === 'Models' && (
           <section className="panel models-panel">

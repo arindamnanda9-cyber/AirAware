@@ -1,0 +1,91 @@
+{
+  "source": {
+    "name": "OpenCity Air Quality Monitor Maps",
+    "publisher": "KSRSAC via OpenCity",
+    "coordinate_reference_date": "2023-10-18",
+    "format": "KML",
+    "note": "12 coordinates from the Bengaluru-specific 2023 KML. RVCE-Mailasandra uses a provisional match to RV College in the Karnataka-wide KML."
+  },
+  "stations": [
+    {
+      "station_id": "site_162",
+      "name": "BTM Layout, Bengaluru - CPCB",
+      "latitude": 12.9166,
+      "longitude": 77.6101
+    },
+    {
+      "station_id": "site_1553",
+      "name": "Bapuji Nagar, Bengaluru - KSPCB",
+      "latitude": 12.9568,
+      "longitude": 77.5397
+    },
+    {
+      "station_id": "site_1554",
+      "name": "Hebbal, Bengaluru - KSPCB",
+      "latitude": 13.0354,
+      "longitude": 77.5988
+    },
+    {
+      "station_id": "site_165",
+      "name": "City Railway Station, Bengaluru - KSPCB",
+      "latitude": 12.9781,
+      "longitude": 77.5697
+    },
+    {
+      "station_id": "site_1555",
+      "name": "Hombegowda Nagar, Bengaluru - KSPCB",
+      "latitude": 12.9375,
+      "longitude": 77.5949
+    },
+    {
+      "station_id": "site_1556",
+      "name": "Jayanagar 5th Block, Bengaluru - KSPCB",
+      "latitude": 12.9208,
+      "longitude": 77.5842
+    },
+    {
+      "station_id": "site_5729",
+      "name": "Jigani, Bengaluru - KSPCB",
+      "latitude": 12.7816279,
+      "longitude": 77.6299145
+    },
+    {
+      "station_id": "site_5681",
+      "name": "Kasturi Nagar, Bengaluru - KSPCB",
+      "latitude": 13.003872,
+      "longitude": 77.664217
+    },
+    {
+      "station_id": "site_163",
+      "name": "Peenya, Bengaluru - CPCB",
+      "latitude": 13.0285,
+      "longitude": 77.5197
+    },
+    {
+      "station_id": "site_166",
+      "name": "Sanegurava Halli, Bengaluru - KSPCB",
+      "latitude": 13.0302,
+      "longitude": 77.6218
+    },
+    {
+      "station_id": "site_5686",
+      "name": "Shivapura_Peenya, Bengaluru - KSPCB",
+      "latitude": 13.0246342,
+      "longitude": 77.5080115
+    },
+    {
+      "station_id": "site_1558",
+      "name": "Silk Board, Bengaluru - KSPCB",
+      "latitude": 12.9177,
+      "longitude": 77.6238
+    },
+    {
+      "station_id": "site_5678",
+      "name": "RVCE-Mailasandra, Bengaluru - KSPCB",
+      "latitude": 12.9230597,
+      "longitude": 77.5001992,
+      "coordinate_status": "provisional",
+      "coordinate_match": "RV College, Bengaluru"
+    }
+  ]
+}

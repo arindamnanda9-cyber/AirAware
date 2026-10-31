@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document id="root_doc">
+<Schema name="ka_aq_monitors" id="ka_aq_monitors">
+	<SimpleField name="OBJECTID" type="int"></SimpleField>
+	<SimpleField name="KGISCode" type="string"></SimpleField>
+	<SimpleField name="DepartmentCode" type="string"></SimpleField>
+	<SimpleField name="KGISAQMSID" type="int"></SimpleField>
+	<SimpleField name="AQMSName" type="string"></SimpleField>
+	<SimpleField name="KGISVillageID" type="int"></SimpleField>
+	<SimpleField name="KGISWardID" type="string"></SimpleField>
+</Schema>
+<Folder><name>ka_aq_monitors</name>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ka_aq_monitors">
+		<SimpleData name="OBJECTID">1</SimpleData>
+		<SimpleData name="KGISCode">29572055428031620000FEPCBUNOCRAQM0001</SimpleData>
+		<SimpleData name="DepartmentCode">1</SimpleData>
+		<SimpleData name="KGISAQMSID">1</SimpleData>
+		<SimpleData name="AQMSName">Air Monitoring Station, Banasawadi Police Station, Bengaluru</SimpleData>
+		<SimpleData name="KGISVillageID">15124</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>77.6400496,13.0196911</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ka_aq_monitors">
+		<SimpleData name="OBJECTID">2</SimpleData>
+		<SimpleData name="KGISCode">29572055428031620000FEPCBUNOCRAQM0002</SimpleData>
+		<SimpleData name="DepartmentCode">2</SimpleData>
+		<SimpleData name="KGISAQMSID">2</SimpleData>
+		<SimpleData name="AQMSName">Air Monitoring Station, DTDC House, Old Airport, Bengaluru</SimpleData>
+		<SimpleData name="KGISVillageID">30092</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>77.6126738,12.9670244</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ka_aq_monitors">
+		<SimpleData name="OBJECTID">3</SimpleData>
+		<SimpleData name="KGISCode">29572055428031620000FEPCBUNOCRAQM0003</SimpleData>
+		<SimpleData name="DepartmentCode">3</SimpleData>
+		<SimpleData name="KGISAQMSID">3</SimpleData>
+		<SimpleData name="AQMSName">Air Monitoring Station, TERI Office, Domlur, Bengaluru</SimpleData>
+		<SimpleData name="KGISVillageID">15093</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>77.6379591,12.9636141</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ka_aq_monitors">
+		<SimpleData name="OBJECTID">4</SimpleData>
+		<SimpleData name="KGISCode">29572055428031620000FEPCBUNOCRAQM0004</SimpleData>
+		<SimpleData name="DepartmentCode">4</SimpleData>
+		<SimpleData name="KGISAQMSID">4</SimpleData>
+		<SimpleData name="AQMSName">Air Monitoring Station, Amco Batteries, Byatarayanapura, Bengaluru</SimpleData>
+		<SimpleData name="KGISVillageID">15084</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>77.540556,12.952344</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ka_aq_monitors">
+		<SimpleData name="OBJECTID">5</SimpleData>
+		<SimpleData name="KGISCode">29572055428031620000FEPCBUNOCRAQM0005</SimpleData>
+		<SimpleData name="DepartmentCode">5</SimpleData>
+		<SimpleData name="KGISAQMSID">5</SimpleData>
+		<SimpleData name="AQMSName">Air Monitoring Station, Central Silk Board Junction, Bengaluru</SimpleData>
+		<SimpleData name="KGISVillageID">15536</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>77.6220305,12.9167024</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ka_aq_monitors">
+		<SimpleData name="OBJECTID">6</SimpleData>
+		<SimpleData name="KGISCode">29572055428031620000FEPCBUNOCRAQM0006</SimpleData>
+		<SimpleData name="DepartmentCode">6</SimpleData>
+		<SimpleData name="KGISAQMSID">6</SimpleData>
+		<SimpleData name="AQMSName">Air Monitoring Station, Indira Gandhi Institute of Child Health, Bengaluru</SimpleData>
+		<SimpleData name="KGISVillageID">15680</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>77.5922938,12.936816</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ka_aq_monitors">
+		<SimpleData name="OBJECTID">7</SimpleData>
+		<SimpleData name="KGISCode">29572055428031620000FEPCBUNOCRAQM0007</SimpleData>
+		<SimpleData name="DepartmentCode">7</SimpleData>
+		<SimpleData name="KGISAQMSID">7</SimpleData>
+		<SimpleData name="AQMSName">Air Monitoring Station, Victoria Hospital, Bengaluru</SimpleData>
+		<SimpleData name="KGISVillageID">30092</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>77.575417,12.963278</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ka_aq_monitors">
+		<SimpleData name="OBJECTID">8</SimpleData>
+		<SimpleData name="KGISCode">29572055428031620000FEPCBUNOCRAQM0008</SimpleData>
+		<SimpleData name="DepartmentCode">8</SimpleData>
+		<SimpleData name="KGISAQMSID">8</SimpleData>
+		<SimpleData name="AQMSName">Air Monitoring Station, Yeswanthpur Police Station, Bengaluru</SimpleData>
+		<SimpleData name="KGISVillageID">15480</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>77.5582307,13.0182138</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ka_aq_monitors">
+		<SimpleData name="OBJECTID">9</SimpleData>
+		<SimpleData name="KGISCode">29572055428031620000FEPCBUNOCRAQM0009</SimpleData>
+		<SimpleData name="DepartmentCode">9</SimpleData>
+		<SimpleData name="KGISAQMSID">9</SimpleData>
+		<SimpleData name="AQMSName">Air Monitoring Station, Graphite India Limitd, Mahadevapura, Bengaluru</SimpleData>
+		<SimpleData name="KGISVillageID">21393</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>77.708889,12.979611</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ka_aq_monitors">
+		<SimpleData name="OBJECTID">10</SimpleData>
+		<SimpleData name="KGISCode">29572055446131110000FEPCBUNOCRAQM0001</SimpleData>
+		<SimpleData name="DepartmentCode">10</SimpleData>
+		<SimpleData name="KGISAQMSID">10</SimpleData>
+		<SimpleData name="AQMSName">Air Monitoring Station, Kaji Sonnenahalli, Bengaluru</SimpleData>
+		<SimpleData name="KGISVillageID">21357</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>77.7667382,13.0339072</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ka_aq_monitors">
+		<SimpleData name="OBJECTID">11</SimpleData>
+		<SimpleData name="KGISCode">29572055428031620000FEPCBUNOCRAQM0010</SimpleData>
+		<SimpleData name="DepartmentCode">11</SimpleData>
+		<SimpleData name="KGISAQMSID">11</SimpleData>
+		<SimpleData name="AQMSName">Air Monitoring Station, Jnana Bharathi Campus, University of Bengaluru</SimpleData>
+		<SimpleData name="KGISVillageID">15593</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>77.510778,12.946306</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ka_aq_monitors">
+		<SimpleData name="OBJECTID">12</SimpleData>
+		<SimpleData name="KGISCode">29572055428031620000FEPCBUNOCRAQM0011</SimpleData>
+		<SimpleData name="DepartmentCode">12</SimpleData>
+		<SimpleData name="KGISAQMSID">12</SimpleData>
+		<SimpleData name="AQMSName">Air Monitoring Station, RV College, Bengaluru</SimpleData>
+		<SimpleData name="KGISVillageID">15594</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>77.5001992,12.9230597</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ka_aq_monitors">
+		<SimpleData name="OBJECTID">13</SimpleData>
+		<SimpleData name="KGISCode">29572055428031620000FEPCBUNOCRAQM0012</SimpleData>
+		<SimpleData name="DepartmentCode">13</SimpleData>
+		<SimpleData name="KGISAQMSID">13</SimpleData>
+		<SimpleData name="AQMSName">Air Monitoring Station, Peenya Gymkhana, Bengaluru</SimpleData>
+		<SimpleData name="KGISVillageID">15475</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>77.5101329,13.0244356</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ka_aq_monitors">
+		<SimpleData name="OBJECTID">14</SimpleData>
+		<SimpleData name="KGISCode">29572055428031620000FEPCBUNOCRAQM0013</SimpleData>
+		<SimpleData name="DepartmentCode">14</SimpleData>
+		<SimpleData name="KGISAQMSID">14</SimpleData>
+		<SimpleData name="AQMSName">Air Monitoring Station, Peenya Industrial Area, Bengaluru</SimpleData>
+		<SimpleData name="KGISVillageID">15483</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>77.5229471,13.0231544</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ka_aq_monitors">
+		<SimpleData name="OBJECTID">15</SimpleData>
+		<SimpleData name="KGISCode">29572055428031620000FEPCBUNOCRAQM0014</SimpleData>
+		<SimpleData name="DepartmentCode">15</SimpleData>
+		<SimpleData name="KGISAQMSID">15</SimpleData>
+		<SimpleData name="AQMSName">Air Monitoring Station, KHB Industrial Area, Yelahanka, Bengaluru</SimpleData>
+		<SimpleData name="KGISVillageID">15420</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>77.5785384,13.1070307</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ka_aq_monitors">
+		<SimpleData name="OBJECTID">16</SimpleData>
+		<SimpleData name="KGISCode">29572055428031620000FEPCBUNOCRAQM0015</SimpleData>
+		<SimpleData name="DepartmentCode">16</SimpleData>
+		<SimpleData name="KGISAQMSID">16</SimpleData>
+		<SimpleData name="AQMSName">Air Monitoring Station, City Railway Station, Bengaluru</SimpleData>
+		<SimpleData name="KGISVillageID">15076</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>77.5704455,12.9771599</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ka_aq_monitors">
+		<SimpleData name="OBJECTID">17</SimpleData>
+		<SimpleData name="KGISCode">29572055428031620000FEPCBUNOCRAQM0016</SimpleData>
+		<SimpleData name="DepartmentCode">17</SimpleData>
+		<SimpleData name="KGISAQMSID">17</SimpleData>
+		<SimpleData name="AQMSName">Air Monitoring Station, KSPCB Nisarga Bhavan, Bengaluru</SimpleData>
+		<SimpleData name="KGISVillageID">15494</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>77.5448478,12.9905128</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ka_aq_monitors">
+		<SimpleData name="OBJECTID">18</SimpleData>
+		<SimpleData name="KGISCode">29556054475988620000FEPCBUNOCRAQM0001</SimpleData>
+		<SimpleData name="DepartmentCode">18</SimpleData>
+		<SimpleData name="KGISAQMSID">18</SimpleData>
+		<SimpleData name="AQMSName">Air Monitoring Station, Regional Office, Bagalkote</SimpleData>
+		<SimpleData name="KGISVillageID">167</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>75.669972,16.166611</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ka_aq_monitors">
+		<SimpleData name="OBJECTID">19</SimpleData>
+		<SimpleData name="KGISCode">29555054388030330000FEPCBUNOCRAQM0001</SimpleData>
+		<SimpleData name="DepartmentCode">19</SimpleData>
+		<SimpleData name="KGISAQMSID">19</SimpleData>
+		<SimpleData name="AQMSName">Air Monitoring Station, Regional Office, Belagavi</SimpleData>
+		<SimpleData name="KGISVillageID">975</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>74.5419014,15.8883705</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ka_aq_monitors">
+		<SimpleData name="OBJECTID">20</SimpleData>
+		<SimpleData name="KGISCode">29565055008031140000FEPCBUNOCRAQM0001</SimpleData>
+		<SimpleData name="DepartmentCode">20</SimpleData>
+		<SimpleData name="KGISAQMSID">20</SimpleData>
+		<SimpleData name="AQMSName">Air Monitoring Station, City Corporation Office, Bellary</SimpleData>
+		<SimpleData name="KGISVillageID">5007</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>76.927583,15.145194</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ka_aq_monitors">
+		<SimpleData name="OBJECTID">21</SimpleData>
+		<SimpleData name="KGISCode">29565055008031140000FEPCBUNOCRAQM0002</SimpleData>
+		<SimpleData name="DepartmentCode">21</SimpleData>
+		<SimpleData name="KGISAQMSID">21</SimpleData>
+		<SimpleData name="AQMSName">Air Monitoring Station, Regional Office, Bellary</SimpleData>
+		<SimpleData name="KGISVillageID">5007</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>76.886556,15.151333</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ka_aq_monitors">
+		<SimpleData name="OBJECTID">22</SimpleData>
+		<SimpleData name="KGISCode">29558054578030600000FEPCBUNOCRAQM0001</SimpleData>
+		<SimpleData name="DepartmentCode">22</SimpleData>
+		<SimpleData name="KGISAQMSID">22</SimpleData>
+		<SimpleData name="AQMSName">Air Monitoring Station, Regional Office, Bidar</SimpleData>
+		<SimpleData name="KGISVillageID">2436</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>77.482194,17.93025</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ka_aq_monitors">
+		<SimpleData name="OBJECTID">23</SimpleData>
+		<SimpleData name="KGISCode">29557054498030510000FEPCBUNOCRAQM0001</SimpleData>
+		<SimpleData name="DepartmentCode">23</SimpleData>
+		<SimpleData name="KGISAQMSID">23</SimpleData>
+		<SimpleData name="AQMSName">Air Monitoring Station, Regional Office, Bijapur</SimpleData>
+		<SimpleData name="KGISVillageID">4989</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>75.722369,16.802594</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ka_aq_monitors">
+		<SimpleData name="OBJECTID">24</SimpleData>
+		<SimpleData name="KGISCode">29578055778032010000FEPCBUNOCRAQM0001</SimpleData>
+		<SimpleData name="DepartmentCode">24</SimpleData>
+		<SimpleData name="KGISAQMSID">24</SimpleData>
+		<SimpleData name="AQMSName">Air Monitoring Station, KSPCB Office Premises, Chamarajanagar</SimpleData>
+		<SimpleData name="KGISVillageID">24983</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>76.9385,11.922806</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ka_aq_monitors">
+		<SimpleData name="OBJECTID">25</SimpleData>
+		<SimpleData name="KGISCode">29566055058031200000FEPCBUNOCRAQM0001</SimpleData>
+		<SimpleData name="DepartmentCode">25</SimpleData>
+		<SimpleData name="KGISAQMSID">25</SimpleData>
+		<SimpleData name="AQMSName">Air Monitoring Station, Regional Office, Chitradurga</SimpleData>
+		<SimpleData name="KGISVillageID">5903</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>76.4169137,14.2094274</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ka_aq_monitors">
+		<SimpleData name="OBJECTID">26</SimpleData>
+		<SimpleData name="KGISCode">29564054956045820000FEPCBUNOCRAQM0001</SimpleData>
+		<SimpleData name="DepartmentCode">26</SimpleData>
+		<SimpleData name="KGISAQMSID">26</SimpleData>
+		<SimpleData name="AQMSName">Air Monitoring Station, Intake Well of HPF, Harihara</SimpleData>
+		<SimpleData name="KGISVillageID">7716</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>75.795361,14.527222</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ka_aq_monitors">
+		<SimpleData name="OBJECTID">27</SimpleData>
+		<SimpleData name="KGISCode">29567055128031270000FEPCBUNOCRAQM0001</SimpleData>
+		<SimpleData name="DepartmentCode">27</SimpleData>
+		<SimpleData name="KGISAQMSID">27</SimpleData>
+		<SimpleData name="AQMSName">Air Monitoring Station, Moti Talkies, Gandhi Circle, Davanagere</SimpleData>
+		<SimpleData name="KGISVillageID">11745</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>75.9237499,14.4666736</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ka_aq_monitors">
+		<SimpleData name="OBJECTID">28</SimpleData>
+		<SimpleData name="KGISCode">29567055128031270000FEPCBUNOCRAQM0002</SimpleData>
+		<SimpleData name="DepartmentCode">28</SimpleData>
+		<SimpleData name="KGISAQMSID">28</SimpleData>
+		<SimpleData name="AQMSName">Air Monitoring Station, Regional Office, Davanagere</SimpleData>
+		<SimpleData name="KGISVillageID">11760</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>75.905972,14.476111</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ka_aq_monitors">
+		<SimpleData name="OBJECTID">29</SimpleData>
+		<SimpleData name="KGISCode">29562054738030830000FEPCBUNOCRAQM0001</SimpleData>
+		<SimpleData name="DepartmentCode">29</SimpleData>
+		<SimpleData name="KGISAQMSID">29</SimpleData>
+		<SimpleData name="AQMSName">Air Monitoring Station, Regional Office, Dharawad</SimpleData>
+		<SimpleData name="KGISVillageID">6559</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>75.023167,15.43125</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ka_aq_monitors">
+		<SimpleData name="OBJECTID">30</SimpleData>
+		<SimpleData name="KGISCode">29562054758030830000FEPCBUNOCRAQM0001</SimpleData>
+		<SimpleData name="DepartmentCode">30</SimpleData>
+		<SimpleData name="KGISAQMSID">30</SimpleData>
+		<SimpleData name="AQMSName">Air Monitoring Station, Hubli</SimpleData>
+		<SimpleData name="KGISVillageID">31497</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>75.1141202,15.3512024</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ka_aq_monitors">
+		<SimpleData name="OBJECTID">31</SimpleData>
+		<SimpleData name="KGISCode">29579055828032070000FEPCBUNOCRAQM0001</SimpleData>
+		<SimpleData name="DepartmentCode">31</SimpleData>
+		<SimpleData name="KGISAQMSID">31</SimpleData>
+		<SimpleData name="AQMSName">Air Monitoring Station, Govt. Hospital, Kalaburagi</SimpleData>
+		<SimpleData name="KGISVillageID">3351</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>76.834861,17.329278</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ka_aq_monitors">
+		<SimpleData name="OBJECTID">32</SimpleData>
+		<SimpleData name="KGISCode">29574055566162300000FEPCBUNOCRAQM0001</SimpleData>
+		<SimpleData name="DepartmentCode">32</SimpleData>
+		<SimpleData name="KGISAQMSID">32</SimpleData>
+		<SimpleData name="AQMSName">Air Monitoring Station, KSPCB Office, Hassan</SimpleData>
+		<SimpleData name="KGISVillageID">22852</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>76.125472,13.008444</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ka_aq_monitors">
+		<SimpleData name="OBJECTID">33</SimpleData>
+		<SimpleData name="KGISCode">29563054788030900000FEPCBUNOCRAQM0001</SimpleData>
+		<SimpleData name="DepartmentCode">33</SimpleData>
+		<SimpleData name="KGISAQMSID">33</SimpleData>
+		<SimpleData name="AQMSName">Air Monitoring Station, Post Office, Baithkol, Karwar</SimpleData>
+		<SimpleData name="KGISVillageID">31870</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>74.122361,14.801806</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ka_aq_monitors">
+		<SimpleData name="OBJECTID">34</SimpleData>
+		<SimpleData name="KGISCode">29581055918032210000FEPCBUNOCRAQM0001</SimpleData>
+		<SimpleData name="DepartmentCode">34</SimpleData>
+		<SimpleData name="KGISAQMSID">34</SimpleData>
+		<SimpleData name="AQMSName">Air Monitoring Station, Regional Office Premises, Kolar</SimpleData>
+		<SimpleData name="KGISVillageID">16300</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>78.157,13.127639</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ka_aq_monitors">
+		<SimpleData name="OBJECTID">35</SimpleData>
+		<SimpleData name="KGISCode">29573055508031680000FEPCBUNOCRAQM0001</SimpleData>
+		<SimpleData name="DepartmentCode">35</SimpleData>
+		<SimpleData name="KGISAQMSID">35</SimpleData>
+		<SimpleData name="AQMSName">Air Monitoring Station, KSPCB Office Premises, Mandya</SimpleData>
+		<SimpleData name="KGISVillageID">24310</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>76.881639,12.523417</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ka_aq_monitors">
+		<SimpleData name="OBJECTID">36</SimpleData>
+		<SimpleData name="KGISCode">29575055618031810000FEPCBUNOCRAQM0001</SimpleData>
+		<SimpleData name="DepartmentCode">36</SimpleData>
+		<SimpleData name="KGISAQMSID">36</SimpleData>
+		<SimpleData name="AQMSName">Air Monitoring Station, Sequent Scientific Limited, Baikampady, Dakshina Kannada</SimpleData>
+		<SimpleData name="KGISVillageID">26164</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>74.8255916,12.9514217</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ka_aq_monitors">
+		<SimpleData name="OBJECTID">37</SimpleData>
+		<SimpleData name="KGISCode">29577055726188330000FEPCBUNOCRAQM0001</SimpleData>
+		<SimpleData name="DepartmentCode">37</SimpleData>
+		<SimpleData name="KGISAQMSID">37</SimpleData>
+		<SimpleData name="AQMSName">Air Monitoring Station, KSPCB Office, Hebbal, Mysuru</SimpleData>
+		<SimpleData name="KGISVillageID">28443</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>76.626972,12.350972</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ka_aq_monitors">
+		<SimpleData name="OBJECTID">38</SimpleData>
+		<SimpleData name="KGISCode">29577055728031940000FEPCBUNOCRAQM0001</SimpleData>
+		<SimpleData name="DepartmentCode">38</SimpleData>
+		<SimpleData name="KGISAQMSID">38</SimpleData>
+		<SimpleData name="AQMSName">Air Monitoring Station, KSRTC Bus Stand, Mysuru</SimpleData>
+		<SimpleData name="KGISVillageID">28460</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>76.6584116,12.3122395</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ka_aq_monitors">
+		<SimpleData name="OBJECTID">39</SimpleData>
+		<SimpleData name="KGISCode">29559054618030670000FEPCBUNOCRAQM0001</SimpleData>
+		<SimpleData name="DepartmentCode">39</SimpleData>
+		<SimpleData name="KGISAQMSID">39</SimpleData>
+		<SimpleData name="AQMSName">Air Monitoring Station, Regional Office, Raichur</SimpleData>
+		<SimpleData name="KGISVillageID">4237</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>77.354806,16.207889</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ka_aq_monitors">
+		<SimpleData name="OBJECTID">40</SimpleData>
+		<SimpleData name="KGISCode">29568055218031380000FEPCBUNOCRAQM0001</SimpleData>
+		<SimpleData name="DepartmentCode">40</SimpleData>
+		<SimpleData name="KGISAQMSID">40</SimpleData>
+		<SimpleData name="AQMSName">Air Monitoring Station, Visveshwaraya Iron &amp; Steel Plant Limited, Bhadravathi</SimpleData>
+		<SimpleData name="KGISVillageID">12425</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>75.7004576,13.817392</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ka_aq_monitors">
+		<SimpleData name="OBJECTID">41</SimpleData>
+		<SimpleData name="KGISCode">29571055376113740000FEPCBUNOCRAQM0001</SimpleData>
+		<SimpleData name="DepartmentCode">41</SimpleData>
+		<SimpleData name="KGISAQMSID">41</SimpleData>
+		<SimpleData name="AQMSName">Air Monitoring Station, Regional Office, Tumkur</SimpleData>
+		<SimpleData name="KGISVillageID">19670</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>77.2079779,13.3748351</coordinates></Point>
+  </Placemark>
+</Folder>
+</Document></kml>

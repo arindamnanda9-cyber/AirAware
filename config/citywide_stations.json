@@ -1,0 +1,28 @@
+{
+  "source": {
+    "name": "OpenCity - Bengaluru Air Quality Monitors 2023",
+    "publisher": "OpenCity",
+    "record_date": "2023-10-18",
+    "format": "KML"
+  },
+  "stations": [
+    {
+      "station_id": "site_162",
+      "name": "BTM Layout, Bengaluru - CPCB",
+      "latitude": 12.9166,
+      "longitude": 77.6101
+    },
+    {
+      "station_id": "site_1553",
+      "name": "Bapuji Nagar, Bengaluru - KSPCB",
+      "latitude": 12.9568,
+      "longitude": 77.5397
+    },
+    {
+      "station_id": "site_1554",
+      "name": "Hebbal, Bengaluru - KSPCB",
+      "latitude": 13.0354,
+      "longitude": 77.5988
+    }
+  ]
+}

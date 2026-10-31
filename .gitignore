@@ -27,3 +27,7 @@ logs/
 # IDE
 .vscode/
 .idea/
+
+# Citywide air-quality datasets (large CSV files)
+data/raw/citywide/*.csv
+data/processed/citywide/*.csv
