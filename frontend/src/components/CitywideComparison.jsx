@@ -9,7 +9,7 @@ import {
   YAxis,
 } from 'recharts';
 
-const API_BASE = 'http://127.0.0.1:8000/api/citywide-expanded';
+import { CITYWIDE_API_BASE as API_BASE } from '../config/api.js';
 
 const PERIODS = [
   { label: '7D', days: 7 },
@@ -194,7 +194,10 @@ export default function CitywideComparison() {
     return () => controller.abort();
   }, [days]);
 
-  const allStations = comparison?.stations || [];
+  const allStations = useMemo(
+    () => comparison?.stations || [],
+    [comparison]
+  );
 
   // Build a lookup: station_id → array of history records
   const allStationsHistory = useMemo(() => {
@@ -281,7 +284,7 @@ export default function CitywideComparison() {
               </span>
             </div>
             <div className="comparison-station-chips">
-              {allStations.map((station, index) => {
+              {allStations.map((station) => {
                 const isSelected = selectedIds.has(station.station_id);
                 // Find color index based on selected order
                 const selectedList = [...selectedIds];
