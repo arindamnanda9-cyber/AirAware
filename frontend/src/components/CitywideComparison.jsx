@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import {
   CartesianGrid,
   Line,
@@ -9,7 +9,7 @@ import {
   YAxis,
 } from 'recharts';
 
-const API_BASE = 'http://127.0.0.1:8000/api/citywide';
+const API_BASE = 'http://127.0.0.1:8000/api/citywide-expanded';
 
 const PERIODS = [
   { label: '7D', days: 7 },
@@ -18,31 +18,60 @@ const PERIODS = [
   { label: '1Y', days: 365 },
 ];
 
-const STATION_COLORS = ['#77dfb2', '#d7b66d', '#83a9ff'];
+// Up to 4 stations can be selected simultaneously
+const MAX_SELECTED = 4;
 
-function formatDate(date) {
-  return new Date(`${date}T00:00:00`).toLocaleDateString('en-IN', {
+// Distinct colours for up to 4 selected stations
+const STATION_COLORS = ['#77dfb2', '#d7b66d', '#83a9ff', '#f08080'];
+
+// Default station IDs to pre-select (BTM, Bapuji, Peenya)
+const DEFAULT_SELECTED = ['site_162', 'site_1553', 'site_163'];
+
+function formatDate(dateStr) {
+  return new Date(`${dateStr}T00:00:00Z`).toLocaleDateString('en-IN', {
     day: '2-digit',
     month: 'short',
+    timeZone: 'UTC',
   });
 }
 
-function ComparisonChart({ title, dataKey, stations, history }) {
-  const chartData = history.map((record) => {
-    const point = {
-      date: formatDate(record.date),
-      fullDate: record.date,
-    };
-
-    stations.forEach((station) => {
-      const stationRecord = station.history.find(
-        (item) => item.date === record.date
-      );
-      point[station.station_id] = stationRecord?.[dataKey] ?? null;
+function ComparisonChart({ title, dataKey, selectedStations, allStationsHistory }) {
+  // Build chart data aligned on date
+  const chartData = useMemo(() => {
+    // Collect all unique dates across selected stations
+    const dateSet = new Set();
+    selectedStations.forEach((station) => {
+      (allStationsHistory[station.station_id] || []).forEach((item) => {
+        dateSet.add(item.date);
+      });
     });
+    const dates = Array.from(dateSet).sort();
 
-    return point;
-  });
+    return dates.map((date) => {
+      const point = { date };
+      selectedStations.forEach((station) => {
+        const record = (allStationsHistory[station.station_id] || []).find(
+          (item) => item.date === date
+        );
+        point[station.station_id] = record?.[dataKey] ?? null;
+      });
+      return point;
+    });
+  }, [selectedStations, allStationsHistory, dataKey]);
+
+  if (chartData.length === 0) {
+    return (
+      <article className="panel citywide-comparison-chart">
+        <div className="panel-heading">
+          <div>
+            <h3>{title}</h3>
+            <p>Daily average concentration · µg/m³</p>
+          </div>
+        </div>
+        <div className="history-state">No data available for the selected stations and period.</div>
+      </article>
+    );
+  }
 
   return (
     <article className="panel citywide-comparison-chart">
@@ -59,6 +88,7 @@ function ComparisonChart({ title, dataKey, stations, history }) {
             <CartesianGrid stroke="#26352e" strokeDasharray="3 3" />
             <XAxis
               dataKey="date"
+              tickFormatter={formatDate}
               tick={{ fill: '#91a49a', fontSize: 11 }}
               axisLine={{ stroke: '#35463d' }}
               tickLine={false}
@@ -77,16 +107,14 @@ function ComparisonChart({ title, dataKey, stations, history }) {
                 borderRadius: 10,
                 color: '#e8f2ec',
               }}
-              labelFormatter={(_, payload) =>
-                payload?.[0]?.payload?.fullDate || ''
-              }
+              labelFormatter={(label) => formatDate(label)}
               formatter={(value, name) => [
                 value == null ? 'Unavailable' : `${value} µg/m³`,
-                stations.find((station) => station.station_id === name)
-                  ?.station_name || name,
+                selectedStations.find((s) => s.station_id === name)
+                  ?.station_name?.split(',')[0] || name,
               ]}
             />
-            {stations.map((station, index) => (
+            {selectedStations.map((station, index) => (
               <Line
                 key={station.station_id}
                 type="monotone"
@@ -104,10 +132,10 @@ function ComparisonChart({ title, dataKey, stations, history }) {
       </div>
 
       <div className="comparison-legend">
-        {stations.map((station, index) => (
+        {selectedStations.map((station, index) => (
           <span key={station.station_id}>
             <i style={{ background: STATION_COLORS[index % STATION_COLORS.length] }} />
-            {station.station_name.split(',')[0]}
+            {station.station_name?.split(',')[0] || station.station_id}
           </span>
         ))}
       </div>
@@ -120,6 +148,7 @@ export default function CitywideComparison() {
   const [comparison, setComparison] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [selectedIds, setSelectedIds] = useState(new Set(DEFAULT_SELECTED));
 
   useEffect(() => {
     const controller = new AbortController();
@@ -140,6 +169,17 @@ export default function CitywideComparison() {
 
         const data = await response.json();
         setComparison(data);
+
+        // Set default selection to first 3 stations if current selection
+        // has no overlap with the newly loaded stations
+        const availableIds = new Set((data.stations || []).map((s) => s.station_id));
+        setSelectedIds((prev) => {
+          const overlap = [...prev].filter((id) => availableIds.has(id));
+          if (overlap.length > 0) return prev;
+          // Fall back to DEFAULT_SELECTED that exist in this dataset
+          const defaults = DEFAULT_SELECTED.filter((id) => availableIds.has(id));
+          return new Set(defaults.slice(0, 3));
+        });
       } catch (err) {
         if (err.name !== 'AbortError') {
           setError(err.message || 'Comparison data unavailable.');
@@ -154,7 +194,36 @@ export default function CitywideComparison() {
     return () => controller.abort();
   }, [days]);
 
-  const stations = comparison?.stations || [];
+  const allStations = comparison?.stations || [];
+
+  // Build a lookup: station_id → array of history records
+  const allStationsHistory = useMemo(() => {
+    const map = {};
+    allStations.forEach((s) => {
+      map[s.station_id] = s.history;
+    });
+    return map;
+  }, [allStations]);
+
+  // Ordered list of selected stations, preserving stable color mapping
+  const selectedStations = useMemo(
+    () => allStations.filter((s) => selectedIds.has(s.station_id)),
+    [allStations, selectedIds]
+  );
+
+  function toggleStation(id) {
+    setSelectedIds((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) {
+        if (next.size <= 1) return prev; // keep at least one selected
+        next.delete(id);
+      } else {
+        if (next.size >= MAX_SELECTED) return prev; // cap at MAX_SELECTED
+        next.add(id);
+      }
+      return next;
+    });
+  }
 
   return (
     <section className="citywide-comparison-section">
@@ -195,30 +264,87 @@ export default function CitywideComparison() {
       ) : comparison ? (
         <>
           <div className="comparison-date-note">
-            Shared comparison window: <strong>{comparison.start_date}</strong>
+            Shared comparison window:{' '}
+            <strong>{comparison.start_date}</strong>
             {' — '}
             <strong>{comparison.end_date}</strong>
           </div>
 
-          <div className="citywide-comparison-grid">
-            <ComparisonChart
-              title="PM2.5 comparison"
-              dataKey="pm25"
-              stations={stations}
-              history={stations[0]?.history || []}
-            />
-            <ComparisonChart
-              title="PM10 comparison"
-              dataKey="pm10"
-              stations={stations}
-              history={stations[0]?.history || []}
-            />
+          {/* Station selection interface */}
+          <div className="comparison-station-selector">
+            <div className="comparison-selector-header">
+              <span className="comparison-selector-label">
+                Select stations to compare
+              </span>
+              <span className="comparison-selector-hint">
+                {selectedIds.size} / {MAX_SELECTED} selected
+              </span>
+            </div>
+            <div className="comparison-station-chips">
+              {allStations.map((station, index) => {
+                const isSelected = selectedIds.has(station.station_id);
+                // Find color index based on selected order
+                const selectedList = [...selectedIds];
+                const colorIndex = selectedList.indexOf(station.station_id);
+                const chipColor = isSelected
+                  ? STATION_COLORS[colorIndex % STATION_COLORS.length]
+                  : undefined;
+
+                return (
+                  <button
+                    type="button"
+                    key={station.station_id}
+                    className={`comparison-chip ${isSelected ? 'selected' : ''}`}
+                    onClick={() => toggleStation(station.station_id)}
+                    disabled={!isSelected && selectedIds.size >= MAX_SELECTED}
+                    style={isSelected ? { borderColor: chipColor, color: chipColor } : undefined}
+                    title={
+                      !isSelected && selectedIds.size >= MAX_SELECTED
+                        ? `Deselect a station to add ${station.station_name?.split(',')[0]}`
+                        : station.station_name
+                    }
+                  >
+                    {isSelected && (
+                      <i
+                        className="chip-dot"
+                        style={{ background: chipColor }}
+                      />
+                    )}
+                    {station.station_name?.split(',')[0] || station.station_id}
+                  </button>
+                );
+              })}
+            </div>
           </div>
 
-          <p className="comparison-footnote">
-            Historical daily averages, not live readings. Missing observations
-            remain unavailable and are displayed as gaps.
-          </p>
+          {selectedStations.length === 0 ? (
+            <div className="history-state">
+              Select at least one station to display comparison charts.
+            </div>
+          ) : (
+            <>
+              <div className="citywide-comparison-grid">
+                <ComparisonChart
+                  title="PM2.5 comparison"
+                  dataKey="pm25"
+                  selectedStations={selectedStations}
+                  allStationsHistory={allStationsHistory}
+                />
+                <ComparisonChart
+                  title="PM10 comparison"
+                  dataKey="pm10"
+                  selectedStations={selectedStations}
+                  allStationsHistory={allStationsHistory}
+                />
+              </div>
+
+              <p className="comparison-footnote">
+                Historical daily averages, not live readings. Missing observations
+                remain unavailable and are displayed as gaps. City Railway Station
+                and Sanegurava Halli have no PM₂.₅ records in this dataset.
+              </p>
+            </>
+          )}
         </>
       ) : null}
     </section>

@@ -9,7 +9,7 @@ import {
   YAxis,
 } from 'recharts';
 
-const API_BASE = 'http://127.0.0.1:8000/api/citywide';
+const API_BASE = 'http://127.0.0.1:8000/api/citywide-expanded';
 
 const PERIODS = [
   { label: '7D', days: 7 },
@@ -35,14 +35,15 @@ function CustomTooltip({ active, payload, label }) {
       {payload.map((item) => (
         <div key={item.dataKey}>
           <span style={{ background: item.color }} />
-          {item.name}: {item.value == null ? 'Unavailable' : `${item.value} µg/m³`}
+          {item.name}:{' '}
+          {item.value == null ? 'Unavailable' : `${item.value} µg/m³`}
         </div>
       ))}
     </div>
   );
 }
 
-export default function CitywideHistory({ stationId, stationName }) {
+export default function CitywideHistory({ stationId, stationName, hasNoPm25 }) {
   const [days, setDays] = useState(30);
   const [history, setHistory] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -86,6 +87,9 @@ export default function CitywideHistory({ stationId, stationName }) {
 
   if (!stationId) return null;
 
+  // Determine if the loaded data has any non-null pm25 values
+  const hasPm25Data = history.some((item) => item.pm25 != null);
+
   return (
     <section className="panel citywide-history-panel">
       <div className="panel-heading">
@@ -117,6 +121,71 @@ export default function CitywideHistory({ stationId, stationName }) {
         <div className="history-state">
           No historical observations available for this period.
         </div>
+      ) : hasNoPm25 || !hasPm25Data ? (
+        <>
+          <div className="history-state">
+            <span>
+              PM₂.₅ observations are unavailable for this station.
+              {history.length > 0 && hasPm25Data === false && (
+                <> PM₁₀ data may still be available in the chart below.</>
+              )}
+            </span>
+          </div>
+          {/* Still render PM10 if available */}
+          {history.some((item) => item.pm10 != null) && (
+            <>
+              <div className="history-legend">
+                <span><i className="history-pm10" /> PM10</span>
+              </div>
+              <div className="history-chart-wrap">
+                <ResponsiveContainer width="100%" height="100%">
+                  <LineChart
+                    data={history}
+                    margin={{ top: 12, right: 12, left: 0, bottom: 4 }}
+                  >
+                    <CartesianGrid
+                      stroke="#26372e"
+                      strokeDasharray="3 3"
+                      vertical={false}
+                    />
+                    <XAxis
+                      dataKey="date"
+                      tickFormatter={formatDate}
+                      stroke="#81948a"
+                      tick={{ fill: '#91a398', fontSize: 10 }}
+                      tickLine={false}
+                      axisLine={false}
+                      minTickGap={25}
+                    />
+                    <YAxis
+                      stroke="#81948a"
+                      tick={{ fill: '#91a398', fontSize: 10 }}
+                      tickLine={false}
+                      axisLine={false}
+                      width={48}
+                      domain={['auto', 'auto']}
+                    />
+                    <Tooltip content={<CustomTooltip />} />
+                    <Line
+                      type="monotone"
+                      dataKey="pm10"
+                      name="PM10"
+                      stroke="#d7b66d"
+                      strokeWidth={2}
+                      dot={false}
+                      activeDot={{ r: 4 }}
+                      connectNulls={false}
+                    />
+                  </LineChart>
+                </ResponsiveContainer>
+              </div>
+              <div className="history-footnote">
+                Daily PM₁₀ averages only · PM₂.₅ unavailable for this station.
+                Missing readings are not treated as zero. Historical data only.
+              </div>
+            </>
+          )}
+        </>
       ) : (
         <>
           <div className="history-legend">

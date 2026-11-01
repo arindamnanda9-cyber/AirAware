@@ -9,7 +9,10 @@ import {
   ZoomControl,
 } from 'react-leaflet';
 
-const API_BASE = 'http://127.0.0.1:8000/api/citywide';
+const API_BASE = 'http://127.0.0.1:8000/api/citywide-expanded';
+
+// Station IDs confirmed to have no PM2.5 observations
+const NO_PM25_STATIONS = new Set(['site_165', 'site_166']);
 
 function formatTimestamp(timestamp) {
   if (!timestamp) return 'No recorded timestamp';
@@ -25,16 +28,29 @@ function formatTimestamp(timestamp) {
   }) + ' UTC';
 }
 
+function formatDate(isoString) {
+  if (!isoString) return '—';
+  return new Date(isoString).toLocaleDateString('en-IN', {
+    timeZone: 'UTC',
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric',
+  });
+}
+
 function Reading({ label, reading }) {
+  // Use the unit returned by the API. Do not default to µg/m³ when unit is absent.
+  const unit = reading?.unit ?? null;
+  const hasValue = reading?.value != null;
   return (
     <div className="city-reading">
       <span>{label}</span>
       <strong>
-        {reading?.value == null ? '—' : reading.value.toFixed(2)}
-        <small> µg/m³</small>
+        {hasValue ? reading.value.toFixed(2) : '—'}
+        {hasValue && unit && <small> {unit}</small>}
       </strong>
       <span className="city-reading-time">
-        {formatTimestamp(reading?.timestamp)}
+        {hasValue ? formatTimestamp(reading?.timestamp) : '—'}
       </span>
     </div>
   );
@@ -90,8 +106,14 @@ export default function CitywideMap() {
       const reading = readings.find(
         (item) => item.station_id === station.station_id
       );
+      // Derive provisional status from API metadata only — no hardcoded fallback.
+      const isProvisional = station.coordinate_status === 'provisional';
 
-      return { ...station, readings: reading?.readings || {} };
+      return {
+        ...station,
+        readings: reading?.readings || {},
+        isProvisional,
+      };
     });
   }, [stations, readings]);
 
@@ -200,17 +222,22 @@ export default function CitywideMap() {
                         <Popup>
                           <div className="map-popup">
                             <strong>{station.name}</strong>
+                            {station.isProvisional && (
+                              <span className="coord-status-badge coord-status-provisional">
+                                Provisional coordinates
+                              </span>
+                            )}
                             <span>
                               PM₂.₅:{' '}
                               {station.readings.pm25?.value == null
                                 ? '—'
-                                : `${station.readings.pm25.value} µg/m³`}
+                                : `${station.readings.pm25.value} ${station.readings.pm25.unit}`}
                             </span>
                             <span>
                               PM₁₀:{' '}
                               {station.readings.pm10?.value == null
                                 ? '—'
-                                : `${station.readings.pm10.value} µg/m³`}
+                                : `${station.readings.pm10.value} ${station.readings.pm10.unit}`}
                             </span>
                             <span>Historical observation · not live</span>
                           </div>
@@ -256,6 +283,9 @@ export default function CitywideMap() {
                         {station.name.includes(',')
                           ? station.name.split(',').slice(1).join(',').trim()
                           : 'Bengaluru'}
+                        {station.isProvisional && (
+                          <span className="station-provisional-badge"> · provisional coords</span>
+                        )}
                       </small>
                     </span>
                     <span className="station-arrow">↗</span>
@@ -266,8 +296,22 @@ export default function CitywideMap() {
               {activeStation && (
                 <div className="citywide-selected-details">
                   <span className="citywide-kicker">SELECTED STATION</span>
-                  <h4>{activeStation.name}</h4>
-                  <div className="citywide-readings">
+                  <h4>
+                    {activeStation.name}
+                    {activeStation.isProvisional && (
+                      <span className="coord-status-badge coord-status-provisional">
+                        Provisional coordinates
+                      </span>
+                    )}
+                  </h4>
+
+                  {NO_PM25_STATIONS.has(activeStation.station_id) && (
+                    <div className="station-no-pm25-notice">
+                      No PM₂.₅ observations in the current dataset for this station.
+                    </div>
+                  )}
+
+                  <div className="citywide-readings citywide-readings-expanded">
                     <Reading
                       label="PM₂.₅"
                       reading={activeStation.readings.pm25}
@@ -276,14 +320,33 @@ export default function CitywideMap() {
                       label="PM₁₀"
                       reading={activeStation.readings.pm10}
                     />
+                    <Reading
+                      label="NO₂"
+                      reading={activeStation.readings.no2}
+                    />
+                    <Reading
+                      label="SO₂"
+                      reading={activeStation.readings.so2}
+                    />
+                    <Reading
+                      label="CO"
+                      reading={activeStation.readings.co}
+                    />
+                    <Reading
+                      label="Ozone"
+                      reading={activeStation.readings.ozone}
+                    />
                   </div>
+
                   <div className="station-coverage">
                     <span>Available records</span>
                     <strong>
                       {activeStation.total_records.toLocaleString('en-IN')}
                     </strong>
+                    <span>First dataset record</span>
+                    <strong>{formatDate(activeStation.first_record)}</strong>
                     <span>Last dataset record</span>
-                    <strong>{formatTimestamp(activeStation.last_record)}</strong>
+                    <strong>{formatDate(activeStation.last_record)}</strong>
                   </div>
                 </div>
               )}
@@ -300,6 +363,7 @@ export default function CitywideMap() {
             <CitywideHistory
               stationId={activeStation.station_id}
               stationName={activeStation.name}
+              hasNoPm25={NO_PM25_STATIONS.has(activeStation.station_id)}
             />
           )}
 
@@ -311,7 +375,8 @@ export default function CitywideMap() {
               Values shown are the latest available valid observations in the
               historical dataset, not current air quality. Different stations
               have different data end dates. Missing pollutant readings are
-              shown as unavailable rather than zero.
+              shown as unavailable rather than zero. CO is reported in mg/m³;
+              all other pollutants in µg/m³.
             </p>
           </div>
         </>
