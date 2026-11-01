@@ -1,0 +1,41 @@
+{
+  "source": {
+    "name": "BWSSB Kadubeesanahalli CPCB Hourly AQI Data 2017–2023",
+    "resource_id": "d6bf24ed-cc61-4553-8578-4e259ac0e45d",
+    "dataset_url": "https://data.opencity.in/dataset/bengaluru-hourly-air-quality-reports/resource/d6bf24ed-cc61-4553-8578-4e259ac0e45d",
+    "publisher": "OpenCity",
+    "original_source": "Central Pollution Control Board (CPCB) via airquality.cpcb.gov.in",
+    "license": "Public Domain",
+    "data_period": "2017-01-01 to 2023-12-31",
+    "data_limitations": [
+      "AQI index metric only; does not contain raw pollutant concentrations (PM2.5, PM10, etc.)",
+      "Must not be used for PM2.5 concentration prediction or ML model training",
+      "Upper cap at AQI 500 for extreme events",
+      "Irregular missing gaps and partial months (e.g., October 2017, November 2017)",
+      "Source times are unverified against official CPCB portal headers, presumed IST (UTC+05:30) per CAAQMS standard"
+    ],
+    "timezone_confidence": {
+      "presumed_timezone": "Asia/Kolkata (UTC+05:30)",
+      "status": "unverified",
+      "note": "CPCB CAAQMS monitoring stations natively log in IST. The source CSV lacks explicit UTC offset or timezone headers, so timestamps are preserved as source-local with unverified status."
+    },
+    "coordinate_confidence": {
+      "latitude": 12.9473,
+      "longitude": 77.6983,
+      "status": "provisional",
+      "note": "Coordinates derived from external CPCB/BWSSB STP directory references; not verified against KSRSAC official KML registry."
+    }
+  },
+  "stations": [
+    {
+      "station_id": "bwssb_kadubeesanahalli",
+      "name": "BWSSB Kadubeesanahalli, Bengaluru - CPCB",
+      "latitude": 12.9473,
+      "longitude": 77.6983,
+      "coordinate_status": "provisional",
+      "parameter": "AQI",
+      "unit": "AQI index",
+      "timezone_status": "unverified_source_local"
+    }
+  ]
+}

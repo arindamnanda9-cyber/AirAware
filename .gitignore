@@ -31,3 +31,7 @@ logs/
 # Citywide air-quality datasets (large CSV files)
 data/raw/citywide/*.csv
 data/processed/citywide/*.csv
+
+# Historical AQI datasets
+data/external/
+data/processed/aqi/*.csv
